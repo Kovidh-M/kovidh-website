@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Kovidh Muraleedhara's fun and creative corner on the web!">
+    <title>Kovidh's Cool Website</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-image: url('https://example.com/avengers-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+        section h2 {
+            color: #ff758c;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            width: 80%;
+            max-width: 400px;
+        }
+        .contact-form button {
+            background: #ff7eb3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .contact-form button:hover {
+            background: #ff758c;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 1em;
+            width: 300px;
+            border: 2px solid #ff758c;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background: #ff7eb3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .search-bar button:hover {
+            background: #ff758c;
+        }
+    </style>
+    <script>
+        function searchWebsite() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const sections = document.querySelectorAll('section');
+            let found = false;
+
+            sections.forEach(section => {
+                const text = section.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    section.style.display = 'block';
+                    found = true;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            if (!found) {
+                alert("No results found for '" + query + "'.");
+            }
+        }
+
+        function searchWeb() {
+            const query = document.getElementById('externalSearch').value;
+            const url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+            window.open(url, '_blank');
+        }
+
+        function startVoiceSearch() {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Sorry, your browser does not support voice search.");
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+
+            recognition.onresult = function(event) {
+                const query = event.results[0][0].transcript.toLowerCase();
+                document.getElementById('search').value = query;
+                searchWebsite(); // Trigger the existing search functionality
+            };
+
+            recognition.onerror = function() {
+                alert("Voice recognition failed. Please try again.");
+            };
+
+            recognition.start();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Kovidh's Cool Website!</h1>
+        <div class="marquee">
+            <span>Explore my world of creativity, fun, and cool projects!</span>
+        </div>
+    </header>
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for topics on this site...">
+        <button onclick="searchWebsite()">Search Website</button>
+        <button onclick="startVoiceSearch()">??</button>
+        <br><br>
+        <input type="text" id="externalSearch" placeholder="Search the web privately...">
+        <button onclick="searchWeb()">Search Web</button>
+    </div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#chess">Chess</a>
+        <a href="#life-at-home">Life at Home</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="home">
+        <h2>Home</h2>
+        <p>Hey there! I'm Kovidh Muraleedhara, a 12-year-old with a big imagination and a love for creativity. Check out my site to see what I'm up to!</p>
+    </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi! I'm Kovidh. I'm in middle school and love playing chess, spending time with my family, and enjoying simple moments at home. I am kind of foodie and like teasing my family members.</p>
+        <p>When I'm not playing chess or reading, you can find me relaxing at home or spending time with my parents!</p>
+    </section>
+    <section id="chess">
+        <h2>Chess</h2>
+        <p>Chess is one of my favorite hobbies! I enjoy the strategy and planning involved in the game. It helps me stay focused and sharpens my thinking skills.</p>
+        <p> I play on online, I love the challenge that each match brings. My favorite chess piece is the King because without the King the game is nothing</p>
+    </section>
+    <section id="life-at-home">
+        <h2>Life at Home</h2>
+        <p>Life at home is always fun and relaxing. I love spending time with my family, sharing stories, and enjoying delicious meals together.In my home there are totally 6 members including me, my mother Kumuda, my father Muraleedhara,my sister Gaana, my grand parents Narasimha and Jayalakshmi.</p>
+        <p>When I'm not studying or playing chess, I like to read books, watch movies, and sometimes just relax in my room.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Have a question or want to say hi? Fill out the form below!</p>
+        <form class="contact-form" action="https://formspree.io/f/{your_form_id}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Kovidh Muraleedhara. All rights reserved. Thanks for visiting!</p>
+    </footer>
+</body>
+</html>
